@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using System.Windows;
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace MVVMDemo
@@ -25,6 +27,15 @@ namespace MVVMDemo
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void StudentViewControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            MVVMDemo.ViewModel.StudentViewModel studentViewModelObject =
+               new MVVMDemo.ViewModel.StudentViewModel();
+            studentViewModelObject.LoadStudents();
+
+            StudentViewControl.DataContext = studentViewModelObject;
         }
     }
 }
